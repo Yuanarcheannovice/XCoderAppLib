@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.xcoder.demo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+//    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(':XCoderAppLib')
+    //图片框架
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
+    // If you want to use the GPU Filters
+    //    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
+    ///okhttph鸿洋的封装(https://github.com/hongyangAndroid/okhttputils)
+    compile 'com.zhy:okhttputils:2.6.2'
+    //
+    compile "com.android.support:design:${supportVersion}"
+
+    compile ('com.scwang.smartrefresh:SmartRefreshLayout:1.0.3-alpha-2') {
+        exclude group: 'com.android.support'
+    }
+
+    //基础库
+//    compile(name: 'XCoderAppLib', ext: 'aar')
+}

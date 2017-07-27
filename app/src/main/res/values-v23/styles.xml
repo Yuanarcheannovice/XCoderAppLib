@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/app_gray_light_color</item>
+        <item name="colorPrimaryDark">@color/app_gray_light_color</item>
+        <item name="colorAccent">@color/app_main_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@color/app_txt_black</item>
+
+    </style>
+
+
+
+    <style name="AppTheme.Black">-->
+        <!-- 黑色 -->
+        <item name="colorPrimary">@color/app_black_color</item>
+        <item name="colorPrimaryDark">@color/app_black_color</item>
+        <item name="colorAccent">@color/app_main_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+    </style>
+
+
+    <!--<string name="ActionButtonColor" parent=""></string>-->
+
+</resources>

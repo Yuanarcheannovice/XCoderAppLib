@@ -1,0 +1,70 @@
+<resources>
+
+    <!--5.x手机样式适配-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/app_black_color</item>
+        <item name="colorPrimaryDark">@color/app_black_color</item>
+        <item name="colorAccent">@color/app_main_color</item>
+        <item name="android:textColor">@color/app_txt_black</item>
+    </style>
+
+    <!-- //////////////////// MD效果需要的Style/////////////////////////////-->
+
+    <!--    AppButton的基本主题-->
+    <style name="AppButtonTheme" parent="Widget.AppCompat.Button">
+        <!--    <item name="colorButtonNormal">@color/blue</item>//这个颜色设置是没用用的，-->
+        <!--扁平化按钮是没有背景色的-->
+        <item name="colorControlHighlight">@color/app_main_color</item>
+    </style>
+
+    <!--   需要MD水波纹效果的布局用这个主题-->
+    <style name="AppLayoutTheme" parent="AppTheme">
+        <item name="colorControlHighlight">@color/gary_light</item>
+    </style>
+
+    <!--    AppButton的MD扁平化水波纹-->
+    <style name="AppButtonStyle">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:theme">@style/AppButtonTheme</item>
+    </style>
+
+    <!--    App布局的MD的扁平水波纹-->
+    <style name="AppLayoutStyle">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:theme">@style/AppLayoutTheme</item>
+    </style>
+
+
+    <!--    ////////////////////MD效果需要的Style-///////////////// -->
+
+
+    <style name="MyNav"  parent="AppLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+
+
+    <!--&lt;!&ndash;    零钱明细里面的修改&ndash;&gt;-->
+    <!--<style name="AppButtonStyle.BalanceDetail">-->
+        <!--<item name="android:background">?attr/selectableItemBackground</item>-->
+        <!--<item name="android:theme">@style/AppButtonTheme.BalanceDetail</item>-->
+
+    <!--</style>-->
+
+    <!--&lt;!&ndash;    零钱明细里面的修改&ndash;&gt;-->
+    <!--<style name="AppButtonTheme.BalanceDetail" parent="Widget.AppCompat.Button">-->
+        <!--&lt;!&ndash;    <item name="colorButtonNormal">@color/blue</item>//这个颜色设置是没用用的，&ndash;&gt;-->
+        <!--&lt;!&ndash;扁平化按钮是没有背景色的&ndash;&gt;-->
+        <!--<item name="colorControlHighlight">@color/app_white_color</item>-->
+    <!--</style>-->
+
+
+</resources>

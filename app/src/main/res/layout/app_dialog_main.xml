@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_box"
+    android:orientation="vertical">
+    <!--    全局dialog-->
+    <TextView
+        android:id="@+id/app_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="标题"
+
+        android:textColor="@color/app_txt_black"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/app_dialog_linehor1"
+        style="@style/Line_H" />
+
+    <TextView
+        android:id="@+id/app_dialog_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_box"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="20dp"
+        android:text="message"
+        android:textColor="#FF000000"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/app_dialog_linehor2"
+        style="@style/Line_H" />
+
+    <LinearLayout
+        android:id="@+id/app_dialog_buttonll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/app_dialog_buttonleft"
+            style="@style/AppButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Button"
+            android:textSize="16sp"
+            android:textColor="@color/app_main_color"
+             />
+
+        <View
+            android:id="@+id/app_dialog_linever"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#eeeeee" />
+
+        <Button
+            android:id="@+id/app_dialog_buttonright"
+            style="@style/AppButtonStyle"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/app_main_color"
+            android:textSize="16sp"
+            android:text="Button"
+             />
+    </LinearLayout>
+</LinearLayout>

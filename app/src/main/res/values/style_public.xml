@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--存放通用styel-->
+<resources>
+    <!--listview的基本样式-->
+    <style name="AppListViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:divider">@color/listview_divider_color</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:footerDividersEnabled">true</item>
+        <item name="android:headerDividersEnabled">false</item>
+        <item name="android:scrollbarSize">3dp</item>
+        <item name="android:scrollbarThumbVertical">@color/app_main_color</item>
+    </style>
+
+    <!-- 顶部标头 -->
+    <style name="titleStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:textColor">@color/app_txt_gray</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@color/app_white_color</item>
+    </style>
+
+
+
+
+
+
+
+    <!-- 通用线 -->
+    <style name="Line_H">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5sp</item>
+        <item name="android:background">#eeeeee</item>
+    </style>
+
+    <!-- 通用线 -->
+    <style name="Line_H_Drak">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5sp</item>
+        <item name="android:background">#E1E1E1</item>
+    </style>
+
+    <style name="Line_v">
+        <item name="android:layout_width">0.5sp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#eeeeee</item>
+    </style>
+
+    <style name="Line_H.bot">
+        <item name="android:background">#e5e5e5</item>
+    </style>
+
+
+</resources>

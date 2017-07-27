@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="topbar">
+        <attr name="lefttext" format="string" />
+        <attr name="leftdrawable" format="reference" />
+        <attr name="lefttextcolor" format="color" />
+        <attr name="lefttextsize" format="dimension" />
+        <attr name="rightbackground" format="reference" />
+        <attr name="rightwidth" format="dimension" />
+        <attr name="rightheight" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ViewPagerIndicator">
+
+        <!-- Style of the tab indicator's tabs. -->
+        <attr name="vpiTabPageIndicatorStyle" format="reference" />
+    </declare-styleable>
+    <!--  <declare-styleable name="Flowlayout">
+          <attr name="verticalSpace" format="dimension" />
+          <attr name="horizontalSpace" format="dimension" />
+      </declare-styleable>-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="CropImageView">
+        <attr name="guidelines">
+            <enum name="on" value="2" />
+            <enum name="onTouch" value="1" />
+            <enum name="off" value="0" />
+        </attr>
+        <attr name="fixAspectRatio" format="boolean" />
+        <attr name="aspectRatioX" format="integer" />
+        <attr name="aspectRatioY" format="integer" />
+        <attr name="imageResource" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="SwitchGroup">
+        <attr name="orientation1">
+            <flag name="horizontal" value="0"></flag>
+            <flag name="vertical" value="1"></flag>
+        </attr>
+        <attr name="pinned_view1" format="reference" />
+        <attr name="pinned_item1" format="reference" />
+        <attr name="pinned_item_array1" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="PullLayout">
+        <attr name="pull_limit" format="dimension" />
+        <attr name="support_over" format="boolean" />
+        <attr name="hold_adjust_type">
+            <flag name="not_adjust" value="0"></flag>
+            <flag name="adjust_content" value="1"></flag>
+            <flag name="elasticity_adjust" value="2"></flag>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="qincard">
+        <attr name="bottomMarginTop" format="dimension" />
+        <attr name="yOffsetStep" format="dimension" />
+    </declare-styleable>
+
+    <!--小伙伴推荐页-->
+    <declare-styleable name="QinCardSwipeFlingAdapterView">
+        <attr name="y_offset_step" format="dimension" />
+        <attr name="rotation_degrees" format="float" />
+        <attr name="min_adapter_stack" format="integer" />
+        <attr name="max_visible" format="integer" />
+    </declare-styleable>
+    <!--图片裁剪-->
+    <declare-styleable name="CropImageView2">
+        <attr name="imgSrc" format="reference" />
+        <attr name="cropMode">
+            <enum name="ratio_fit_image" value="0" />
+            <enum name="ratio_4_3" value="1" />
+            <enum name="ratio_3_4" value="2" />
+            <enum name="ratio_1_1" value="3" />
+            <enum name="ratio_16_9" value="4" />
+            <enum name="ratio_9_16" value="5" />
+            <enum name="ratio_free" value="6" />
+            <enum name="ratio_custom" value="7" />
+            <enum name="circle" value="8" />
+        </attr>
+        <attr name="backgroundColor" format="color" />
+        <attr name="overlayColor" format="color" />
+        <attr name="frameColor" format="color" />
+        <attr name="handleColor" format="color" />
+        <attr name="guideColor" format="color" />
+        <attr name="guideShowMode">
+            <enum name="show_always" value="1" />
+            <enum name="show_on_touch" value="2" />
+            <enum name="not_show" value="3" />
+        </attr>
+        <attr name="handleShowMode">
+            <enum name="show_always" value="1" />
+            <enum name="show_on_touch" value="2" />
+            <enum name="not_show" value="3" />
+        </attr>
+        <attr name="handleSize" format="dimension" />
+        <attr name="touchPadding" format="dimension" />
+        <attr name="minFrameSize" format="dimension" />
+        <attr name="frameStrokeWeight" format="dimension" />
+        <attr name="guideStrokeWeight" format="dimension" />
+        <attr name="cropEnabled" format="boolean" />
+        <attr name="initialFrameScale" format="float" />
+    </declare-styleable>
+    <!--侧滑删除-->
+    <declare-styleable name="SwipeDragLayout">
+        <attr name="need_offset" format="float" />
+        <attr name="ios" format="boolean" />
+        <attr name="click_to_close" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="XView">
+        <attr name="XText" format="string" />
+        <attr name="XTextColor" format="color" />
+        <attr name="XTextSize" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MaterialHeader">
+        <attr name="mhPrimaryColor" format="color" />
+        <attr name="mhShadowColor" format="color" />
+        <attr name="mhShadowRadius" format="dimension" />
+        <attr name="mhShowBezierWave" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle" />
+        <attr name="srlPrimaryColor" />
+        <attr name="srlAccentColor" />
+    </declare-styleable>
+</resources>
