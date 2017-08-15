@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        getWindow().
 //                setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        AppActivityManager.getScreenManager().pushActivity(this);
+        AppActivityManager.getInstance().pushActivity(this);
         ViewUtils.inject(this);
         onXCoderCreate(savedInstanceState);
     }
@@ -162,7 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @返回void
      */
     public void finishBase() {
-        AppActivityManager.getScreenManager().popAllActivityExceptOne(
+        AppActivityManager.getInstance().finishAllActivityExceptOne(
                 getClass());
         finish();
     }
@@ -197,7 +197,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         // 销毁当前的activity
-        AppActivityManager.getScreenManager().popActivity(this);
+        AppActivityManager.getInstance().finishActivity(this);
         // removeProgress();
         //判断子类传过来的是什么再做判断
         Object closeO = closeActivity();
@@ -207,7 +207,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }else if(closeO instanceof  Activity){
             //未处理
         }
-        // AppActivityManager.getScreenManager().popActivity(this);
+        // AppActivityManager.getInstance().finishActivity(this);
     }
 
     /**

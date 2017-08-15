@@ -32,7 +32,7 @@ public class DemoApplication extends BaseApplication {
         super.onCreate();
         //配置app的文件缓存目录的文件夹名称
         AppPathManager.initPathManager("demo");
-//        CrashHandler.getInstance();
+//        CrashHandler.getmInstance();
         initOkHttp();
 
         initRefresh();

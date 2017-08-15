@@ -18,7 +18,6 @@ import java.util.List;
  */
 
 public class AndroidProgressDialog extends ProgressDialog {
-    //这里会导致内存溢出一点点(只会泄漏一次)
     private static List<AndroidProgressDialog> mListDialog;
 
     public AndroidProgressDialog(Context context) {
@@ -34,7 +33,7 @@ public class AndroidProgressDialog extends ProgressDialog {
         return show(context, "正在加载...");
     }
 
-    public static ProgressDialog show(Context context, CharSequence message) {
+    public static AndroidProgressDialog show(Context context, CharSequence message) {
         AndroidProgressDialog progressDialog = show(context, null, message, true, true, new OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
@@ -60,14 +59,15 @@ public class AndroidProgressDialog extends ProgressDialog {
      * @param cancelListener 是否监听dialog消失
      */
     public static AndroidProgressDialog show(Context context, CharSequence title,
-                                      CharSequence message, boolean indeterminate,
-                                      boolean cancelable, OnCancelListener cancelListener) {
+                                         CharSequence message, boolean indeterminate,
+                                         boolean cancelable, OnCancelListener cancelListener) {
+        //做小于21的兼容，保证dialog不会变形
         AndroidProgressDialog dialog;
         if (Build.VERSION.SDK_INT >= 21)
             dialog = new AndroidProgressDialog(context, R.style.AppProgressDialog);
         else
             dialog = new AndroidProgressDialog(context, AlertDialog.THEME_HOLO_LIGHT);
-        //排列为横着的
+        //排列为横着的,用来做上传进度条的
 //        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         dialog.setTitle(title);
         dialog.setMessage(message);

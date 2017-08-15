@@ -2,131 +2,181 @@ package com.xcoder.lib.app;
 
 import android.app.Activity;
 
-import com.xcoder.lib.utils.Utils;
-
 import java.util.Stack;
 
-/***
- * @类名 AppActivityManager
- * @使用 对整个app的Activity的管理
+/**
+ * 对Activity的管理
  */
 public class AppActivityManager {
-    private static Stack<Activity> activityStack;
-    private static AppActivityManager instance;
+    private static Stack<Activity> mActivityStack;
+    private static AppActivityManager mInstance;
 
-    public static AppActivityManager getScreenManager() {
-        if (instance == null) {
-            instance = new AppActivityManager();
+    private AppActivityManager() {
+        mActivityStack = new Stack<>();
+    }
+
+    public static AppActivityManager getInstance() {
+        if (mInstance == null) {
+            mInstance = new AppActivityManager();
         }
-        return instance;
+        return mInstance;
     }
 
     /**
-     * @param activity
-     * @方法说明:销毁指定的Activity
-     * @方法名称:popActivity
-     * @返回 void
+     * 将当前Activity推入栈中
+     *
+     * @param activity Acitivity
      */
-    public void popActivity(Activity activity) {
-        if (activity != null) {
-            // 在从自定义集合中取出当前Activity时，也进行了Activity的关闭操
-            activity.finish();
-            activityStack.remove(activity);
-            activity = null;
+    public void pushActivity(Activity activity) {
+        if (mActivityStack == null) {
+            mActivityStack = new Stack<Activity>();
         }
+        mActivityStack.add(activity);
     }
 
     /**
-     * @return
-     * @方法说明:获得当前栈顶Activity
-     * @方法名称:currentActivity
-     * @返回 Activity
+     * 获得当前栈顶Activity
+     *
+     * @return 当前栈顶Activity
      */
     public Activity currentActivity() {
         Activity activity = null;
-        if (null != activityStack) {
-            if (!activityStack.empty()) {
-                activity = activityStack.lastElement();
+        if (null != mActivityStack) {
+            if (!mActivityStack.empty()) {
+                activity = mActivityStack.lastElement();
             }
         }
         return activity;
     }
 
+
     /**
-     * @param activity
-     * @方法说明:将当前Activity推入栈中
-     * @方法名称:pushActivity
-     * @返回 void
+     * 销毁单个activity
+     *
+     * @param activity 需要销毁的Activity
      */
-    public void pushActivity(Activity activity) {
-        if (activityStack == null) {
-            activityStack = new Stack<>();
-            new Utils().initApp(activity);
+    public void finishActivity(Activity activity) {
+        if (activity != null) {
+            // 在从自定义集合中取出当前Activity时，也进行了Activity的关闭操
+            mActivityStack.remove(activity);
+            activity.finish();
+            activity = null;
         }
-        if (activityStack.size() == 3) {
-            new Utils().initApp(activity);
-        }
-        activityStack.add(activity);
     }
 
     /**
-     * @param cls
-     * @方法说明:退出栈中所有Activity,到指定的activity截止
-     * @方法名称:popAllActivityExceptOne
-     * @返回 void
+     * 销毁单个activity
+     *
+     * @param cls 需要销毁的Activity Name
      */
-    public void popAllActivityExceptOne(Class cls) {
-        while (true) {
-            Activity activity = currentActivity();
-            if (activity == null) {
-                break;
+    public void finishActivity(Class<?> cls) {
+        for (Activity activity : mActivityStack) {
+            if (activity.getClass().equals(cls)) {
+                finishActivity(activity);
             }
-            if (activity.getClass().getName().equals(cls.getName())) {
-                break;
-            }
-            popActivity(activity);
         }
     }
 
     /**
-     * @方法说明:退出栈中所有的activity
-     * @方法名称:removeAllActivity
-     * @返回 void
+     * 从栈中移除某个Activity
      */
-    public void removeAllActivity() {
-        for (int i = activityStack.size() - 1; i >= 0; i--) {
-            Activity activity = activityStack.get(i);
-            popActivity(activity);
+    public void removeActivity(Activity activity) {
+        if (activity == null)
+            return;
+        if (mActivityStack == null) {
+            return;
+        }
+        mActivityStack.remove(activity);
+    }
+
+    /**
+     * 退出栈中所有Activity,到指定的activity截止
+     *
+     * @param cls Activity
+     */
+    public void finishAllActivityExceptOne(Class cls) {
+        //先循环找出来
+        Activity activityExceptOne = null;
+        for (int i = 0; i < mActivityStack.size(); i++) {
+            Activity activity = mActivityStack.get(i);
+            if (activity.getClass().getName().endsWith(cls.getName())) {
+                activityExceptOne = activity;
+            } else {
+                activity.finish();
+            }
+        }
+
+        if (activityExceptOne != null) {
+            mActivityStack.clear();
+            mActivityStack.add(activityExceptOne);
         }
     }
 
     /**
-     * @param cls
+     * 退出栈中所有Activity,到指定的activity截止
+     *
+     * @param activity Activity
+     */
+    public void finishAllActivityExceptOne(Activity activity) {
+        //先循环找出来
+        Activity activityExceptOne = null;
+        for (int i = 0; i < mActivityStack.size(); i++) {
+            Activity activityStack = mActivityStack.get(i);
+            if (activityStack == activity) {
+                activityExceptOne = activity;
+            } else {
+                activity.finish();
+            }
+        }
+
+        if (activityExceptOne != null) {
+            mActivityStack.clear();
+            mActivityStack.add(activityExceptOne);
+        }
+    }
+
+
+    /**
+     * 退出栈中所有的activity
+     */
+    public void finishAllActivity() {
+        for (int i = 0; i < mActivityStack.size(); i++) {
+            if (null != mActivityStack.get(i)) {
+                mActivityStack.get(i).finish();
+            }
+        }
+        mActivityStack.clear();
+    }
+
+    /**
+     * 获取指定的activity
+     *
+     * @param cls Activity Name
      * @return
-     * @方法说明:获取指定的activity
-     * @方法名称:getActivityByClass
-     * @返回 Activity
      */
     public Activity getActivityByClass(Class cls) {
-        if (activityStack == null) {
+        if (mActivityStack == null) {
             return null;
         }
-        for (int i = activityStack.size() - 1; i >= 0; i--) {
-            Activity activity = activityStack.get(i);
-            String name1 = activity.getClass().getName();
-            String name2 = cls.getName();
-            if (name1.equals(name2)) {
-                return activity;
+        for (int i = 0; i < mActivityStack.size(); i++) {
+            if (null != mActivityStack.get(i)) {
+                Activity activity = mActivityStack.get(i);
+                String name1 = activity.getClass().getName();
+                String name2 = cls.getName();
+                if (name1.equals(name2)) {
+                    return activity;
+                }
             }
         }
         return null;
     }
 
+
     /**
-     * @param cls
-     * @return
-     * @方法说明:判断当前的activity是当前的运行 * @方法名称:isCurrentActivity
-     * @返回 boolean
+     * 判断当前的activity是当前的运行
+     *
+     * @param cls Activity名字
+     * @return boolean
      */
     public boolean isCurrentActivity(Class cls) {
         String name1 = currentActivity().getClass().getName();
