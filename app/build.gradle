@@ -42,7 +42,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-
+    compile 'com.github.Yuanarcheannovice:BaseAdapterDemo:1.0'
     //基础库
 //    compile(name: 'XCoderAppLib', ext: 'aar')
 }

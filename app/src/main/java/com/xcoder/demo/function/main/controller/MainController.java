@@ -69,7 +69,7 @@ public class MainController {
                             ind++;
                         }
 
-                        mAdapter.addData(list, true);
+                        mAdapter.setDatas(list, true);
                         mm.srl.finishLoadmore(500);
                     }
                 }, 3000);
@@ -88,7 +88,7 @@ public class MainController {
                     strList.add(ind + "-" + i + (i * 2) + (i + 3));
                     ind++;
                 }
-                mAdapter.setData(strList, true);
+                mAdapter.setDatas(strList, true);
             }
         },3000);
     }

@@ -19,6 +19,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'https://www.jitpack.io' }
         /*添加arr需要弄得配置*/
         flatDir {
             dirs 'libs'
